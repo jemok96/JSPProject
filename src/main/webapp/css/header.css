@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid black;
+  padding: 15px 0px;
+}
+.header__site {
+  font-weight: 800;
+  font-size: 18px;
+  margin-left: 20px;
+}
+.header__welcome {
+  font-size: 15px;
+}
+.header__btn {
+  background-color: white;
+  font-size: 15px;
+  padding: 3px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
