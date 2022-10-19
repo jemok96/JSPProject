@@ -37,15 +37,15 @@
         </div>
         <div class="register__column">
           <div class="register__pw">비밀번호</div>
-          <input type="text" placeholder="비밀번호" />
+          <input type="text" placeholder="비밀번호" required/>
         </div>
         <div class="register__column">
           <div class="register__pwre">비밀번호 재확인</div>
-          <input type="text" placeholder="비밀번호" />
+          <input type="text" placeholder="비밀번호" required/>
         </div>
         <div class="register__column">
           <div class="register__name">이름</div>
-          <input type="text" placeholder="이름" />
+          <input type="text" placeholder="이름" required/>
         </div>
         <div class="register__column">
           <div class="register__phone">휴대전화</div>
@@ -53,7 +53,7 @@
             <input type="tel" placeholder="휴대전화" />
             <button>인증번호 받기</button>
           </div>
-          <input type="text" name="인증" id="" />
+          <input type="text" name="인증" id="" required/>
         </div>
       </div>
 
