@@ -28,32 +28,29 @@
     </style>
   </head>
   <body>
-    <form class="form" action="" method="POST">
+    <form class="form" action="/register/check" method="POST">
       <div class="register">
         <div class="register__text">회원 정보를 입력해주세요</div>
         <div class="register__column">
           <div class="register__id">아이디</div>
-          <input type="text" placeholder="아이디" required />
+          <input type="text" placeholder="아이디" required name="id"/>
         </div>
         <div class="register__column">
           <div class="register__pw">비밀번호</div>
-          <input type="text" placeholder="비밀번호" required/>
+          <input type="password" placeholder="비밀번호" required name="password"/>
         </div>
         <div class="register__column">
           <div class="register__pwre">비밀번호 재확인</div>
-          <input type="text" placeholder="비밀번호" required/>
+          <input type="password" placeholder="비밀번호" required/>
         </div>
         <div class="register__column">
           <div class="register__name">이름</div>
-          <input type="text" placeholder="이름" required/>
+          <input type="text" placeholder="이름" required name="name"/>
         </div>
         <div class="register__column">
           <div class="register__phone">휴대전화</div>
-          <div>
-            <input type="tel" placeholder="휴대전화" />
-            <button>인증번호 받기</button>
-          </div>
-          <input type="text" name="인증" id="" required/>
+          <input type="text" name="phone"/>
+          
         </div>
       </div>
 
