@@ -17,7 +17,7 @@ public class loginCheckController extends HttpServlet{
 		String userpw = request.getParameter("userpw");
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", userId);
-		request.setAttribute("userId", userId);
+
 		request.getRequestDispatcher("/WEB-INF/view/loginCheck.jsp")
 		.forward(request, response);
 	}
