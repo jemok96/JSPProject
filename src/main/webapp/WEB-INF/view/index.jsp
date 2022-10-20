@@ -17,9 +17,9 @@
 			<a href=""><h3 class="header__site">입주민 사이트</h3></a>
 		</div>
 		<div class="header__column">
-			<span class="header__welcome"><strong>손님</strong> 안녕하세요!</span> <a
+			<span class="header__welcome"><strong>${(userId==null)?"손님":userId}</strong> 안녕하세요!</span> <a
 				href="register"><input type="submit" value="회원가입" class="header__btn" /></a> 
-				<a href="login"><input type="submit" value="로그인 페이지로 이동" class="header__btn"/></a>
+				<a href="login"><input type="${(userId==null)?"submit":"hidden" }"  value="로그인 페이지로 이동" class="header__btn"/></a>
 		</div>
 	</header>
 	<main class="main">

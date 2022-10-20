@@ -37,14 +37,14 @@
     </style>
   </head>
   <body>
-    <form action="" class="loginForm">
+    <form action="/login/check" class="loginForm" method="POST">
       <div class="loginform">
         <h2>동원</h2>
         <div class="loginform__id">
-          <input type="text" placeholder="ID" />
+          <input type="text" placeholder="ID" name="userId"/>
         </div>
         <div class="loginform__pw">
-          <input type="text" placeholder="pasword" />
+          <input type="text" placeholder="pasword" name="userpw"/>
         </div>
         <div class="loginForm__remember">
           아이디기억
