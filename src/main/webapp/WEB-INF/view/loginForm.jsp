@@ -15,7 +15,7 @@
         justify-content: center;
         align-items: center;
       }
-      input[type="text"] {
+      input[type="text"], input[type="password"] {
         width: 230px;
         padding: 10px;
       }
@@ -37,20 +37,21 @@
     </style>
   </head>
   <body>
+
     <form action="/login/check" class="loginForm" method="POST">
       <div class="loginform">
         <h2>동원</h2>
         <div class="loginform__id">
-          <input type="text" placeholder="ID" name="userId"/>
+          <input type="text"  name="userId" value=${(empty chkId)?"":chkId}>
         </div>
         <div class="loginform__pw">
-          <input type="text" placeholder="pasword" name="userpw"/>
+          <input type="password" name="userpw" value=${(empty chkPw)?"":chkPw}>
         </div>
         <div class="loginForm__remember">
           아이디기억
-          <input type="checkbox" name="" id="" />
+          <input type="checkbox" ${(empty chkId)?"":"checked"} name="rememberId" value="chkId"/>
           비밀번호기억
-          <input type="checkbox" />
+          <input type="checkbox" ${(empty chkPw)?"":"checked"} name="rememberPw" value="chkPw"/>
         </div>
       </div>
       <input type="submit" value="로그인" />

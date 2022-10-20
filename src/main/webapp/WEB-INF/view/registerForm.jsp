@@ -28,7 +28,7 @@
     </style>
   </head>
   <body>
-    <form class="form" action="/register/check" method="POST">
+    <form class="form" action="/register/check" method="post">
       <div class="register">
         <div class="register__text">회원 정보를 입력해주세요</div>
         <div class="register__column">
