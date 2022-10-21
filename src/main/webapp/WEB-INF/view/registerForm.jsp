@@ -33,7 +33,8 @@
         <div class="register__text">회원 정보를 입력해주세요</div>
         <div class="register__column">
           <div class="register__id">아이디</div>
-          <input type="text" placeholder="아이디" required name="id"/>
+          <input type="text" placeholder="아이디" required name="id"/><br>
+          <span>${check}</span>
         </div>
         <div class="register__column">
           <div class="register__pw">비밀번호</div>

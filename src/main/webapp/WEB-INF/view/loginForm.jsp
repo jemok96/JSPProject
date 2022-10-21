@@ -56,5 +56,9 @@
       </div>
       <input type="submit" value="로그인" />
     </form>
+    <script >
+    	let chkId = "${chkId}";
+    	let chkPw = '${chkPw}'
+    </script>
   </body>
 </html>
