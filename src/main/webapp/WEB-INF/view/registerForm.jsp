@@ -13,7 +13,7 @@
         justify-content: center;
       }
       input {
-        width: 300px;
+        width: 400px;
         padding: 10px;
       }
       .register__column {
@@ -22,9 +22,7 @@
       .register__text {
         text-align: center;
       }
-      input[type="tel"] {
-        width: 200px;
-      }
+      
     </style>
   </head>
   <body>
@@ -38,12 +36,14 @@
         </div>
         <div class="register__column">
           <div class="register__pw">비밀번호</div>
-          <input type="password" placeholder="비밀번호" required name="password"/>
+          <input type="password" id="pw1"  id=placeholder="비밀번호" required name="password"/>
         </div>
         <div class="register__column">
           <div class="register__pwre">비밀번호 재확인</div>
-          <input type="password" placeholder="비밀번호" required/>
+          <input type="password" id="pw2" placeholder="비밀번호" required/>
+          <div id="checkPw"></div>
         </div>
+        
         <div class="register__column">
           <div class="register__name">이름</div>
           <input type="text" placeholder="이름" required name="name"/>
@@ -55,9 +55,30 @@
         </div>
       </div>
 
-      <input type="submit" value="동의하고 가입하기" />
+      <input type="submit" value="동의하고 가입하기" id="sub"/>
     </form>
 
+	<script>
+	 let pwN =false;
+		document.getElementById("pw2").addEventListener('change',function(){
+	   const pw1 = document.getElementById("pw1").value;
+	   const pw2 = document.getElementById("pw2").value;
+	   if(pw1 != pw2){
+		   document.getElementById("checkPw").innerHTML="같지 않아요";
+		   pwN =false;
+	   }
+	   else{
+		   document.getElementById("checkPw").innerHTML="같습니다";
+		   pwN =true;
+	   }
+	 })
+	document.getElementById("sub").addEventListener('click',function(e){
+		if(pwN == false){
+			e.preventDefault();
+			alert("비밀번호가 같지않습니다.")
+		}
+	})
+	</script>
     <script
       src="https://kit.fontawesome.com/8cc4eb714e.js"
       crossorigin="anonymous"
