@@ -43,4 +43,5 @@ public class registerCheck extends HttpServlet{
 		System.out.println(result);
 		response.sendRedirect("/index");
 	}
+
 }
