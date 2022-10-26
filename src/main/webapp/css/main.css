@@ -38,6 +38,15 @@
 .sector__title {
   margin-bottom: 10px;
 }
+.sector__text{
+	font-size: 12px;
+}
+.sector__line{
+	height: 1px;
+	width: 10px;
+	color: red;
+	
+}
 .content{
   display: flex;
   justify-content: center;
