@@ -18,7 +18,7 @@
 		</div>
 		<div class="header__column">
 			<span class="header__welcome"><strong>${(empty userId)?"손님":userId}</strong> 안녕하세요!</span> <a
-				href="register"><input type="submit" value="회원가입" class="header__btn" /></a> 
+				href="/register"><input type="submit" value="회원가입" class="header__btn" /></a> 
 				<a href="login"><input type="${(empty userId)?"submit":"hidden" }"  value="로그인" class="header__btn"/></a>
 				<a href="logout"><input type="${(empty userId)?"hidden":"submit" }"  value="로그아웃" class="header__btn"/></a>
 		</div>
