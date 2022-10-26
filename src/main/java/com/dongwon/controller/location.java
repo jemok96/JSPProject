@@ -1,4 +1,4 @@
-package Controller;
+package com.dongwon.controller;
 
 import java.io.IOException;
 
@@ -8,16 +8,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/register")
-
-public class registerForm extends HttpServlet{
+@WebServlet("/location")
+public class location extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp").forward(request, response);
-//		response.sendRedirect("/login");
-		
+		request.getRequestDispatcher("/WEB-INF/view/locationForm.jsp").forward(request, response);
 	}
-
-	
 }

@@ -1,4 +1,4 @@
-package Controller;
+package com.dongwon.controller;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -46,6 +46,7 @@ public class loginCheck extends HttpServlet{
 //					아이디 or 비밀번호 기억하기 값이 들어왔을 경우 쿠키에 아이디값,비밀번호값 저장
 					if(chkId != null) {
 						Cookie cookie = new Cookie("rememberId",userId);
+					
 						response.addCookie(cookie);
 					}
 					if(chkPw !=null) {
@@ -65,6 +66,7 @@ public class loginCheck extends HttpServlet{
 					}
 //					쿠키로 저장기능, 세션으로 로그인 기능 
 					session.setAttribute("userId", userId);
+					session.setMaxInactiveInterval(60*60*24);
 					response.sendRedirect("/index");
 //					비밀번호 틀렸을경우
 				}else if(!userPw.equals(userpw_)){
