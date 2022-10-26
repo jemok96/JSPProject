@@ -1,74 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Document</title>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js"
-	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
-	crossorigin="anonymous"></script>
-
-<style>
-body {
-	display: flex;
-	justify-content: center;
-}
-
-input {
-	width: 400px;
-	padding: 10px;
-}
-
-.register__column {
-	margin-bottom: 20px;
-}
-
-.register__text {
-	text-align: center;
-}
-</style>
-</head>
-<body>
-	<form class="form" action="/register/check" method="post">
-		<div class="register">
-			<div class="register__text">회원 정보를 입력해주세요</div>
-			<div class="register__column">
-				<div class="register__id">아이디</div>
-				<input type="text" placeholder="아이디" required name="id" id="id" /><br>
-
-				<div>
-					<span id="message"></span>
-				</div>
-			</div>
-			<div class="register__column">
-				<div class="register__pw">비밀번호</div>
-				<input type="password" id="pw1" placeholder="비밀번호" name="password" />
-			</div>
-			<div class="register__column">
-				<div class="register__pwre">비밀번호 재확인</div>
-				<input type="password" id="pw2" placeholder="비밀번호" />
-				<div id="checkPw"></div>
-			</div>
-
-			<div class="register__column">
-				<div class="register__name">이름</div>
-				<input type="text" placeholder="이름" name="name" />
-			</div>
-			<div class="register__column">
-				<div class="register__phone">휴대전화</div>
-				<input type="text" name="phone" />
-
-			</div>
-		</div>
-
-		<input type="submit" value="가입하기" id="sub" />
-	</form>
-
-	<script>
-	let pwN = false;
+let pwN = false;
 	let idN =false;
 	 $('#id').on("change", (e) => {
 	        const id = $('#id').val();
@@ -134,7 +64,3 @@ input {
 				alert("아이디 중복체크 해주세요.")
 			}
 		})
-	</script>
-
-</body>
-</html>

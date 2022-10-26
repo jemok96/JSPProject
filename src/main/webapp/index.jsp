@@ -41,7 +41,7 @@
 				<div class="sector__wrapper">
 					<div class="sector__column">
 						<div class="sector__img">
-							<a href=""><i
+							<a href="location"><i
 								class="fa-solid fa-location-dot fa-4x white--i"></i></a>
 						</div>
 						<div class="sector__title">단지 위치</div>

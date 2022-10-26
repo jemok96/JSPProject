@@ -36,11 +36,9 @@ public class registerCheck extends HttpServlet{
 			result = st.executeUpdate();
 // 		SQLIntegrityConstraintViolationException  -> PK중복 에러
 		} catch (ClassNotFoundException | SQLException e) {
-			request.setAttribute("check", "아이디중복입니다.");
-			request.getRequestDispatcher("/WEB-INF/view/registerForm.jsp").forward(request, response);
 			e.printStackTrace();
 		}
-		System.out.println(result);
+
 		response.sendRedirect("/index");
 	}
 
