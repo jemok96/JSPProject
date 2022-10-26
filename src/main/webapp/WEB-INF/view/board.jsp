@@ -88,12 +88,14 @@ margin-left: 10px}
 						class="content__title">자유게시판</span>
 				</div>
 			</div>
+			<form action="">
 			<div class="content__search">
-				<select name="" id="">
+				<select name="f" >
 					<option value="title">제목</option>
-					<option value="writerId">작성자</option>
-				</select> <input type="text" /> <input type="submit" value="검색" />
+					<option value="writer_Id">작성자</option>
+				</select> <input type="text" name="q"/> <input type="submit" value="검색" />
 			</div>
+			</form>
 			<div>
 				<table class="table">
 					<thead>

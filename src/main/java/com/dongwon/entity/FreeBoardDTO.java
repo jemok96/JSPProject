@@ -2,7 +2,7 @@ package com.dongwon.entity;
 
 import java.sql.Date;
 
-public class FreeBoard {
+public class FreeBoardDTO {
 	private int id;
 	private String title;
 	private String writer_id;
@@ -10,8 +10,8 @@ public class FreeBoard {
 	private String content;
 	private int hit;
 	
-	public FreeBoard() {}
-	public FreeBoard(int id, String title, String writer_id, Date regdate, String content, int hit) {
+	public FreeBoardDTO() {}
+	public FreeBoardDTO(int id, String title, String writer_id, Date regdate, String content, int hit) {
 		this.id = id;
 		this.title = title;
 		this.writer_id = writer_id;

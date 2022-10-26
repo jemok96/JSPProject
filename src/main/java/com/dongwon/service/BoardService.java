@@ -1,6 +1,5 @@
-package com.dongwon.controller;
+package com.dongwon.service;
 
-import java.io.IOException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
@@ -10,25 +9,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import com.dongwon.entity.FreeBoardDTO;
 
-import com.dongwon.entity.FreeBoard;
-
-@WebServlet("/board")
-public class board extends HttpServlet{
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		
-		
+public class BoardService {
+	public List<FreeBoardDTO> getNoticeList(){
+		return getNoticeList("title","",1);
+	}
+	public List<FreeBoardDTO> getNoticeList(int page){
+		return getNoticeList("title","",page);
+	}
+	public List<FreeBoardDTO> getNoticeList(String field, String query, int page){
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
 		String sql = "SELECT * FROM FREE_BOARD";
-		List<FreeBoard> list = new ArrayList<>();
-		FreeBoard fb = null;
+		List<FreeBoardDTO> list = new ArrayList<>();
+		FreeBoardDTO fb = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,"scott","tiger");
@@ -41,15 +35,15 @@ public class board extends HttpServlet{
 				Date regdate = rs.getDate("REGDATE");
 				String content = rs.getString("CONTENT");
 				int hit = rs.getInt("HIT");
-				fb = new FreeBoard(id, title, writer_id, regdate, content, hit);
+				fb = new FreeBoardDTO(id, title, writer_id, regdate, content, hit);
 				list.add(fb);
 			}
 		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		return list;
 
-		request.setAttribute("list", list);
-		request.getRequestDispatcher("/WEB-INF/view/board.jsp").forward(request, response);
+		
 	}
 }
