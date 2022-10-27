@@ -8,6 +8,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>동원베네스트 입주자 사이트</title>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+	integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -88,7 +91,7 @@
 			<a href="/index"><h3 class="header__site">입주민 사이트</h3></a>
 		</div>
 		<div class="header__column">
-			<span class="header__welcome"><strong>${(empty userId)?"손님":userId}</strong>
+			<span class="header__welcome"><strong id="userName">${(empty userId)?"손님":userId}</strong>
 				안녕하세요!</span> <a href="register"><input type="submit" value="회원가입"
 				class="header__btn" /></a> <a href="login"><input
 				type="${(empty userId)?"submit":"hidden" }"  value="로그인"
@@ -117,7 +120,7 @@
 				<div class="wrapper">
 					<div class="warapper__write">
 					<form action="/board/write">
-						<input type="submit" value="글쓰기" />
+						<input type="submit" value="글쓰기" id="write"/>
 						</form>
 					</div>
 					<div class="content__wapper">
@@ -185,7 +188,17 @@
 			</div>
 		</div>
 	</main>
-
+	
+	<script type="text/javascript">
+	document.getElementById("write").addEventListener('click',function(e){
+		const userName = document.getElementById("userName").innerHTML;
+		if(userName=="손님"){
+			e.preventDefault();
+			alert("로그인 하세요")
+		}
+	})
+	</script>
+	
 	<script src="https://kit.fontawesome.com/8cc4eb714e.js"
 		crossorigin="anonymous"></script>
 </body>
