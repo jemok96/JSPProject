@@ -24,10 +24,20 @@ public class Board extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		String page_ = request.getParameter("p");
+		String field_ = request.getParameter("f");
+		String query_ = request.getParameter("q");
+		
+		int page =1;
+		String field ="title"; 
+		String query = "";
+		if(page_!=null && !page_.equals("")) page = Integer.parseInt(page_);
+		if(field_ != null && !field_.equals("")) field = field_;  
+		if(query_ != null && !query_.equals("")) query = query_;  
 		
 		
 		BoardService service = new BoardService();
-		List<FreeBoardDTO> list = service.getNoticeList("title","",1);
+		List<FreeBoardDTO> list = service.getNoticeList(field,query,page);
 
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/view/board.jsp").forward(request, response);

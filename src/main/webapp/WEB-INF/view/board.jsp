@@ -66,9 +66,9 @@ margin-left: 10px}
 			<span class="header__welcome"><strong>${(empty userId)?"손님":userId}</strong>
 				안녕하세요!</span> <a href="register"><input type="submit" value="회원가입"
 				class="header__btn" /></a> <a href="login"><input
-				type="${(empty userId)?" submit":"hidden" }"  value="로그인"
+				type="${(empty userId)?"submit":"hidden" }"  value="로그인"
 				class="header__btn" /></a> <a href="logout"><input
-				type="${(empty userId)?" hidden":"submit" }"  value="로그아웃"
+				type="${(empty userId)?"hidden":"submit" }"  value="로그아웃"
 				class="header__btn" /></a>
 		</div>
 	</header>
@@ -91,9 +91,9 @@ margin-left: 10px}
 			<form action="">
 			<div class="content__search">
 				<select name="f" >
-					<option value="title">제목</option>
-					<option value="writer_Id">작성자</option>
-				</select> <input type="text" name="q"/> <input type="submit" value="검색" />
+					<option value="title" ${(param.f=="title")?"selected":""}>제목</option>
+					<option value="writer_Id" ${(param.f=="writer_Id")?"selected":""}>작성자</option>
+				</select> <input type="text" name="q" value="${param.q}"/> <input type="submit" value="검색" />
 			</div>
 			</form>
 			<div>
@@ -101,7 +101,7 @@ margin-left: 10px}
 					<thead>
 						<tr>
 							<th scope="col">No.</th>
-							<th scope="col">제목</th>
+							<th scope="col">제목</th>  
 							<th scope="col">작성자</th>
 							<th scope="col">작성일</th>
 							<th scope="col">조회수</th>
@@ -111,7 +111,7 @@ margin-left: 10px}
 						<c:forEach var="n" items="${list}">
 							<tr>
 								<th scope="row">${n.id}</th>
-								<td>${n.title}</td>
+								<td><a href="?detail=${n.id}">${n.title}</a></td>
 								<td>${n.writer_id}</td>
 								<td>${n.regdate}</td>
 								<td>${n.hit}</td>
@@ -123,13 +123,14 @@ margin-left: 10px}
 			<c:set var="page" value="${(empty param.p)?1:param.p}"></c:set>
 			<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
 			<c:set var="lastNum" value="${25}"></c:set>
+			
 			<div class="number">
 				<div class="number__left">
 					<c:if test="${startNum >1}">
-						<a href="?p=${startNum-5}&f=&q="><div><</div></a>
+						<a href="?p=${startNum-5}&f=${param.f}&q=${param.q}"><div><</div></a>
 					</c:if>
 					<c:if test="${startNum<=1}">
-						<a><<span onclick="alert(이전 X)"></span></a>
+						<a href="?p=${startNum}" onclick="alert('이전X')"><</a>
 					</c:if>
 
 				</div>
@@ -140,7 +141,7 @@ margin-left: 10px}
 				</ul>
 				<div class="number__right">
 					<c:if test="${startNum +4 <lastNum}">
-						<a href="?p=${startNum+5}&f=&q="><div>></div></a>
+						<a href="?p=${startNum+5}&f=${param.f}&q=${param.q}"><div>></div></a>
 					</c:if>
 				</div>
 			</div>

@@ -20,13 +20,19 @@ public class BoardService {
 	}
 	public List<FreeBoardDTO> getNoticeList(String field, String query, int page){
 		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
-		String sql = "SELECT * FROM FREE_BOARD";
+		String sql = "SELECT * FROM ( "
+				+ "    SELECT ROWNUM NUM , F.* FROM( "
+				+ "        SELECT * FROM FREE_BOARD WHERE "+field+" LIKE ? ORDER BY REGDATE DESC) F "
+				+ " )WHERE NUM BETWEEN ? AND ?";
 		List<FreeBoardDTO> list = new ArrayList<>();
 		FreeBoardDTO fb = null;
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			Connection con = DriverManager.getConnection(url,"scott","tiger");
 			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, "%"+query+"%");
+			st.setInt(2, 1+(page-1)*10);
+			st.setInt(3, page*10);
 			ResultSet rs = st.executeQuery();
 			while(rs.next()) {
 				int id = rs.getInt("ID");
