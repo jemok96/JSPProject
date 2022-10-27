@@ -15,6 +15,7 @@ public class LogOut extends HttpServlet{
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		session.setAttribute("userId", "");
+		session.setMaxInactiveInterval(0);
 		response.sendRedirect("/index");
 	}
 }
