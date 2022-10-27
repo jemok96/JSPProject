@@ -19,9 +19,14 @@
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
-	border-bottom: 1px solid;
+
 	height: 20%;
 	width: 100%;
+}
+
+.content__search {
+	display: flex;
+	justify-content: flex-end;
 }
 
 .content__title {
@@ -48,13 +53,33 @@
 	align-items: center;
 	justify-content: center;
 }
-.number__ul{
-display: flex;
-justify-content: center;
 
+.number__ul {
+	display: flex;
+	justify-content: center;
 }
-.number__ul a{
-margin-left: 10px}
+
+.number__ul a {
+	margin-left: 10px
+}
+
+.wrapper {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.content__wapper {
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.warapper__write {
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+}
 </style>
 </head>
 <body>
@@ -88,20 +113,33 @@ margin-left: 10px}
 						class="content__title">자유게시판</span>
 				</div>
 			</div>
-			<form action="">
-			<div class="content__search">
-				<select name="f" >
-					<option value="title" ${(param.f=="title")?"selected":""}>제목</option>
-					<option value="writer_Id" ${(param.f=="writer_Id")?"selected":""}>작성자</option>
-				</select> <input type="text" name="q" value="${param.q}"/> <input type="submit" value="검색" />
-			</div>
-			</form>
 			<div>
+				<div class="wrapper">
+					<div class="warapper__write">
+					<form action="/board/write">
+						<input type="submit" value="글쓰기" />
+						</form>
+					</div>
+					<div class="content__wapper">
+						<form action="">
+							<div class="content__search">
+								<select name="f">
+									<option value="title" ${(param.f=="title")?"selected":""}>제목</option>
+									<option value="writer_Id"
+										${(param.f=="writer_Id")?"selected":""}>작성자</option>
+								</select> <input type="text" name="q" value="${param.q}" /> <input
+									type="submit" value="검색" />
+							</div>
+
+						</form>
+					</div>
+					<div></div>
+				</div>
 				<table class="table">
 					<thead>
 						<tr>
 							<th scope="col">No.</th>
-							<th scope="col">제목</th>  
+							<th scope="col">제목</th>
 							<th scope="col">작성자</th>
 							<th scope="col">작성일</th>
 							<th scope="col">조회수</th>
@@ -111,7 +149,7 @@ margin-left: 10px}
 						<c:forEach var="n" items="${list}">
 							<tr>
 								<th scope="row">${n.id}</th>
-								<td><a href="?detail=${n.id}">${n.title}</a></td>
+								<td><a href="/board/detail?id=${n.id}">${n.title}</a></td>
 								<td>${n.writer_id}</td>
 								<td>${n.regdate}</td>
 								<td>${n.hit}</td>
@@ -123,7 +161,7 @@ margin-left: 10px}
 			<c:set var="page" value="${(empty param.p)?1:param.p}"></c:set>
 			<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
 			<c:set var="lastNum" value="${25}"></c:set>
-			
+
 			<div class="number">
 				<div class="number__left">
 					<c:if test="${startNum >1}">

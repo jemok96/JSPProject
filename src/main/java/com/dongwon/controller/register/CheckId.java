@@ -1,4 +1,4 @@
-package com.dongwon.controller;
+package com.dongwon.controller.register;
 
 import java.io.IOException;
 import java.io.PrintWriter;

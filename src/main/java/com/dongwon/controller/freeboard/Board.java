@@ -1,4 +1,4 @@
-package com.dongwon.controller;
+package com.dongwon.controller.freeboard;
 
 import java.io.IOException;
 import java.sql.Connection;
