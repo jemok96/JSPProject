@@ -9,7 +9,7 @@ public class FreeBoardDTO {
 	private Date regdate;
 	private String content;
 	private int hit;
-	
+	private int num;
 	public FreeBoardDTO() {}
 	public FreeBoardDTO(int id, String title, String writer_id, Date regdate, String content, int hit) {
 		this.id = id;
@@ -18,6 +18,23 @@ public class FreeBoardDTO {
 		this.regdate = regdate;
 		this.content = content;
 		this.hit = hit;
+	}
+	
+	public FreeBoardDTO(int id, String title, String writer_id, Date regdate, String content, int hit, int num) {
+		this.id = id;
+		this.title = title;
+		this.writer_id = writer_id;
+		this.regdate = regdate;
+		this.content = content;
+		this.hit = hit;
+		this.num = num;
+	}
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 	public int getId() {
 		return id;

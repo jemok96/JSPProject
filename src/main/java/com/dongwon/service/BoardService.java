@@ -41,7 +41,8 @@ public class BoardService {
 				Date regdate = rs.getDate("REGDATE");
 				String content = rs.getString("CONTENT");
 				int hit = rs.getInt("HIT");
-				fb = new FreeBoardDTO(id, title, writer_id, regdate, content, hit);
+				int num = rs.getInt("NUM");
+				fb = new FreeBoardDTO(id, title, writer_id, regdate, content, hit,num);
 				list.add(fb);
 			}
 		

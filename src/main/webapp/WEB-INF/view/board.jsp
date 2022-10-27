@@ -151,7 +151,7 @@
 					<tbody class="table-group-divider">
 						<c:forEach var="n" items="${list}">
 							<tr>
-								<th scope="row">${n.id}</th>
+								<th scope="row">${n.num}</th>
 								<td><a href="/board/detail?id=${n.id}">${n.title}</a></td>
 								<td>${n.writer_id}</td>
 								<td>${n.regdate}</td>
