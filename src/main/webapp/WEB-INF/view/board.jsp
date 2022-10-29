@@ -83,6 +83,12 @@
 	display: flex;
 	justify-content: flex-start;
 }
+#write{
+margin-left: 20px;
+background-color: white;
+border: 1px solid rgba(0,0,0,0.3);padding: 5px
+
+}
 </style>
 </head>
 <body>
