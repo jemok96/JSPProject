@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -169,7 +171,8 @@ border: 1px solid rgba(0,0,0,0.3);padding: 5px
 			</div>
 			<c:set var="page" value="${(empty param.p)?1:param.p}"></c:set>
 			<c:set var="startNum" value="${page-(page-1)%5}"></c:set>
-			<c:set var="lastNum" value="${25}"></c:set>
+			<c:set var="lastNum"
+					value="${fn:substringBefore(Math.ceil(count/10),'.')}"></c:set>
 
 			<div class="number">
 				<div class="number__left">
@@ -190,6 +193,9 @@ border: 1px solid rgba(0,0,0,0.3);padding: 5px
 					<c:if test="${startNum +4 <lastNum}">
 						<a href="?p=${startNum+5}&f=${param.f}&q=${param.q}"><div>></div></a>
 					</c:if>
+					<c:if test="${startNum+4>=lastNum }">
+							<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">></span>
+						</c:if>
 				</div>
 			</div>
 		</div>
