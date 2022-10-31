@@ -45,12 +45,44 @@ public class BoardService {
 				fb = new FreeBoardDTO(id, title, writer_id, regdate, content, hit,num);
 				list.add(fb);
 			}
+			rs.close();
+			st.close();
+			con.close();
 		
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
-
 		
+	}
+	
+	
+	
+	public int getNoticeCount() {
+		return getNoticeCount("title", "");
+	}
+	public int getNoticeCount(String field, String query) {
+		int count = 0;
+		String sql = "SELECT COUNT(ID) COUNT FROM(" + "    SELECT ROWNUM NUM, N.* "
+				+ "    FROM (SELECT * FROM FREE_BOARD WHERE " + field + " LIKE ? ORDER BY REGDATE DESC) N" + ") ";
+		
+		String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url, "scott", "tiger");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, "%" + query + "%");
+
+			ResultSet rs = st.executeQuery();
+			if(rs.next())
+				count = rs.getInt("count"); 
+			rs.close();
+			st.close();
+			con.close();
+		} catch (ClassNotFoundException | SQLException e) {
+			e.printStackTrace();
+		}
+		return count;
 	}
 }
