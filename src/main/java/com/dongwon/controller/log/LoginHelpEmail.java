@@ -8,6 +8,7 @@ import java.util.Random;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.Multipart;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.Transport;
@@ -27,6 +28,7 @@ public class LoginHelpEmail extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		Properties p = new Properties();
+		String memerber = req.getParameter("email");
 		p.put("mail.smtp.starttls.enable", "true");
         p.put("mail.smtp.host", "smtp.naver.com");
         p.put("mail.smtp.auth", "true");
@@ -40,21 +42,24 @@ public class LoginHelpEmail extends HttpServlet{
 			}
 		});
 		
-		String receiver = "rudnf9605@naver.com"; // 메일 받을 주소
+		String receiver = memerber; // 메일 받을 주소
 		String title = "테스트 메일입니다.";
-		String content = "<h2 style='color:blue'>안녕하세요</h2>";
+
+		String num ="123";
 		Message message = new MimeMessage(session);
 		try {
 //			보내는 사람 정보 
 			message.setFrom(new InternetAddress("jemok9605@naver.com", "관리자", "utf-8"));
 			message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
 			message.setSubject(title);
-			message.setContent(content, "text/html; charset=utf-8");
-
+			message.setContent(num,"text/html; charset=utf-8");
 			Transport.send(message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		req.setAttribute("num", num);
+		req.getRequestDispatcher("/WEB-INF/view/loginHelp.jsp").forward(req, res);
 	}
+	
 	
 }
