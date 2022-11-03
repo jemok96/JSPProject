@@ -40,7 +40,7 @@ public class Board extends HttpServlet{
 		List<FreeBoardDTO> list = service.getNoticeList(field,query,page);
 		
 		int count = service.getNoticeCount(field,query);
-		System.out.println(count);
+
 		request.setAttribute("count", count);
 		request.setAttribute("list", list);
 		request.getRequestDispatcher("/WEB-INF/view/board.jsp").forward(request, response);

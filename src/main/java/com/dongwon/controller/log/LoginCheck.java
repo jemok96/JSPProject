@@ -1,6 +1,11 @@
 package com.dongwon.controller.log;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -16,9 +21,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 @WebServlet("/login/check")
-public class LoginCheck extends HttpServlet{
+public class LoginCheck extends HttpServlet {
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 //		ID , Password 값 저장
 		String userId_ = request.getParameter("userId");
 		String userpw_ = request.getParameter("userpw");
@@ -72,7 +79,7 @@ public class LoginCheck extends HttpServlet{
 				}else if(!userPw.equals(userpw_)){
 					response.sendRedirect("/login/loginfail");
 				}
-//				DB조회 결과 없을경우 일치하지않음
+//			
 			}else {
 	
 				response.sendRedirect("/login/loginfail");
@@ -80,5 +87,6 @@ public class LoginCheck extends HttpServlet{
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 }
