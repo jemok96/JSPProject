@@ -65,8 +65,10 @@ input[type="submit"] {
 					${(empty chkPw)?"":"checked"} name="rememberPw" value="chkPw" />
 			</div>
 		</div>
-		<input type="submit" value="로그인" />
+		
 	</form>
+	<div><a href="/login/help"><input type="submit" value="로그인" /></a></div>
+	
 	<%
 	String clientId = "cyLayBKUvNpVzIYWagMY";//애플리케이션 클라이언트 아이디값";
 	String redirectURI = URLEncoder.encode("http://localhost:8080/login/checkNaver", "UTF-8");
