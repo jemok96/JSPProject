@@ -67,7 +67,7 @@ input[type="submit"] {
 		</div>
 		
 	</form>
-	<div><a href="/login/help"><input type="submit" value="로그인" /></a></div>
+	<div><a href="/login/help"><input type="submit" value="아이디 찾기" /></a></div>
 	
 	<%
 	String clientId = "cyLayBKUvNpVzIYWagMY";//애플리케이션 클라이언트 아이디값";
